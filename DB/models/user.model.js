@@ -18,11 +18,11 @@ const userSchema = new Schema({
       return value === "user" || value === "hr";
     },
   },
-
   status: {
     type: String,
     // enum: ["ONLINE", "OFFLINE"],
-    required: true,
+    required: false,
+    default: "OFFLINE",
     validate(value) {
       value = value.toLowerCase();
       return value === "online" || value === "offline";
