@@ -51,3 +51,22 @@ export const deleteCompanySchema = joi
     id: joi.custom(ObjectIdValidate).required(),
   })
   .required();
+
+export const searchCompanySchema = joi
+  .object({
+    name: joi.string().required(),
+  })
+  .required();
+
+export const getCompanyDataSchema = joi
+  .object({
+    id: joi.custom(ObjectIdValidate).required(),
+  })
+  .required();
+
+export const applicationToExcelSchema = joi
+  .object({
+    companyId: joi.custom(ObjectIdValidate).required(),
+    date:joi.date().required()
+  })
+  .required();

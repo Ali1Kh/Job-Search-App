@@ -3,9 +3,11 @@ import { asyncHandler } from "../../utils/asyncHandler.js";
 import * as usersController from "./users.controller.js";
 import { validation } from "../../middlewares/validation.middleware.js";
 import {
+  forgetPassSchema,
   getAccsRecoveryEmailSchema,
   getUserSchema,
   loginSchema,
+  sendRestCodeSchema,
   signUpSchema,
   updateAccSchema,
   updatePassSchema,
@@ -61,6 +63,18 @@ router.get(
   "/getAccsRecoveryEmail",
   validation(getAccsRecoveryEmailSchema),
   asyncHandler(usersController.getAccsRecoveryEmail)
+);
+
+router.patch(
+  "/resetCode",
+  validation(sendRestCodeSchema),
+  asyncHandler(usersController.sendRestCode)
+);
+
+router.patch(
+  "/forgetPass",
+  validation(forgetPassSchema),
+  asyncHandler(usersController.forgetPass)
 );
 
 export default router;

@@ -3,6 +3,8 @@ import express from "express";
 import { dbConect } from "./DB/connection.js";
 import usersRouter from "./src/modules/Users/users.router.js";
 import companiesRouter from "./src/modules/companies/companies.router.js";
+import jobsRouter from "./src/modules/jobs/jobs.router.js";
+
 dotenv.config();
 const port = process.env.PORT;
 const app = express();
@@ -11,6 +13,7 @@ await dbConect();
 
 app.use("/auth", usersRouter);
 app.use("/company", companiesRouter);
+app.use("/jobs", jobsRouter);
 
 app.all("*", (req, res, next) => res.send("End Point Not Found"));
 

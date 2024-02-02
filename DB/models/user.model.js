@@ -28,6 +28,7 @@ const userSchema = new Schema({
       return value === "online" || value === "offline";
     },
   },
+  forgetCode: { type: String },
 });
 
 export const User = model("User", userSchema);
